@@ -5,10 +5,6 @@ matplotlib.rc('xtick', labelsize=18)
 matplotlib.rc('ytick', labelsize=18)
 
 def dyon_scattering(q, kappa, mu, v0, b_array):
-    """
-    Computes the scattering angle Theta and differential cross-section
-    for classical dyon scattering.
-    """
     chi = 2.0 * np.arctan(np.abs(kappa) / (mu * v0 * b_array))
     
     if q > 0:
@@ -35,19 +31,18 @@ def dyon_scattering(q, kappa, mu, v0, b_array):
     return Theta, dsig_dOmega
 
 def rutherford_scattering(q_eff, mu, v0, theta_array):
-    """
-    Standard Rutherford scattering cross-section for comparison.
-    """
     factor = (q_eff / (2.0 * mu * v0**2))**2
     return factor / (np.sin(theta_array / 2.0)**4)
 
-# --- Configuration & Execution ---
+# ---------------------------------------------------------
+# 1. Parameters
+# ---------------------------------------------------------
 mu = 1.0
 v0 = 1.0
 kappa = 1.0   
 q_mag = 1.0   
 
-# FIX: Drastically increase the number of impact parameters for a dense, clean scatter plot
+# Huge number of impact parameters for a dense, clean scatter plot
 b_values = np.logspace(-2, 2, 100000)
 
 theta_rep, xsec_rep = dyon_scattering(q=q_mag, kappa=kappa, mu=mu, v0=v0, b_array=b_values)
@@ -64,7 +59,7 @@ plt.figure(figsize=(10, 6))
 sort_rep = np.argsort(theta_rep)
 plt.semilogy(theta_rep[sort_rep], xsec_rep[sort_rep], label='Repulsive Dyon (q > 0)', color='red', lw=2)
 
-# FIX: Plot the attractive case as a scatter plot with small points (s=0.5) and slight transparency.
+# Attractive case as a scatter plot with small points (s=0.5) and slight transparency.
 # This prevents Matplotlib from drawing lines between different orbital branches.
 plt.scatter(theta_att, xsec_att, label='Attractive Dyon (q < 0)', color='blue', s=0.5, alpha=0.3)
 
@@ -78,7 +73,7 @@ plt.xlim(0, np.pi)
 plt.ylim(1e-2, 1e4)
 plt.grid(True, which="both", ls=":", alpha=0.6)
 
-# Force the legend marker for the scatter plot to be large enough to see easily
+# Legends
 leg = plt.legend(fontsize=16)
 leg.legend_handles[1]._sizes = [40]
 

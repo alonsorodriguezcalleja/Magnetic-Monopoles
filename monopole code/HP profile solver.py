@@ -6,10 +6,10 @@ import matplotlib
 matplotlib.rc('xtick', labelsize=14) 
 matplotlib.rc('ytick', labelsize=14)
 
-# ==========================================
+# ---------------------------------------------------------
 # 1. Define the Parameters
-# ==========================================
-# (You can adjust these based on your specific physical system)
+# ---------------------------------------------------------
+# 
 lmbda = 1.0      # \lambda
 v = 1.0          # v
 g_tilde = 1.0    # \tilde{g}
@@ -18,9 +18,9 @@ r_min = 1e-3     # Start slightly above 0 to avoid 1/r singularity
 r_max = 10.0     # Outer boundary (approximating infinity)
 N_points = 500   # Number of points for the initial mesh
 
-# ==========================================
+# ---------------------------------------------------------
 # 2. Define the System of ODEs
-# ==========================================
+# ---------------------------------------------------------
 def ode_system(r, y):
     """
     y[0] = F, y[1] = F'
@@ -40,9 +40,9 @@ def ode_system(r, y):
     
     return np.vstack((dF, d2F, dW, d2W))
 
-# ==========================================
+# ---------------------------------------------------------
 # 3. Define the Boundary Conditions
-# ==========================================
+# ---------------------------------------------------------
 def boundary_conditions(ya, yb):
     """
     ya: values at r_min
@@ -59,9 +59,9 @@ def boundary_conditions(ya, yb):
         yb[2] - 1.0 / (g_tilde * r_max)        # W(r_max) = 1 / (\tilde{g} * r_max)
     ])
 
-# ==========================================
+# ---------------------------------------------------------
 # 4. Initial Guess for the Solver
-# ==========================================
+# ---------------------------------------------------------
 # BVP solvers require a good initial guess to converge.
 r_mesh = np.linspace(r_min, r_max, N_points)
 
@@ -73,9 +73,9 @@ dW_guess = np.exp(-r_mesh) / (g_tilde * r_max)
 
 y_guess = np.vstack((F_guess, dF_guess, W_guess, dW_guess))
 
-# ==========================================
+# ---------------------------------------------------------
 # 5. Solve the BVP
-# ==========================================
+# ---------------------------------------------------------
 solution = solve_bvp(ode_system, boundary_conditions, r_mesh, y_guess)
 
 if not solution.success:
@@ -84,9 +84,9 @@ if not solution.success:
 else:
     print("Solver converged successfully!")
 
-    # ==========================================
+    # ---------------------------------------------------------
     # 6. Plot the Results
-    # ==========================================
+    # ---------------------------------------------------------
     r_plot = np.linspace(r_min, r_max, 1000)
     y_plot = solution.sol(r_plot)
 
