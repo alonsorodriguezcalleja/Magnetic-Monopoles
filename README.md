@@ -2,7 +2,7 @@
 
 This repository contains the numerical simulations, theoretical derivations, and source files for my research internship on magnetic monopoles, supervised by Dr. Vasiliki Mitsou at the AITANA group (IFIC-UV/CSIC). 
 
-The project bridges formal topological gauge theories with experimental high-energy physics, specifically focusing on the production of highly-ionizing particles at colliders[cite: 1].
+The project bridges formal topological gauge theories with experimental high-energy physics, specifically focusing on the production of highly-ionizing particles at colliders.
 
 ## 📖 Project Overview
 
