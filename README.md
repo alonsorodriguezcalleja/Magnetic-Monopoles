@@ -13,8 +13,6 @@ The manuscript and associated code cover the following key areas:
 * **Phenomenology:** Simulation of Drell-Yan monopole pair production with velocity-dependent magnetic couplings, tailored for MoEDAL detector acceptance bounds.
 
 ## 📂 Repository Structure
-
-* `madgraph_cards/`: Contains the `.dat` configuration cards used for the MadGraph5 simulations.
 * `plots/`: Output kinematic spectra generated from the ROOT analysis.
 * `code/` : Contains the code used.
 * `paper/`: Contains the full LaTeX source code (`.tex`, and figures) alongside the compiled PDF manuscript.
