@@ -16,6 +16,7 @@ The manuscript and associated code cover the following key areas:
 
 * `madgraph_cards/`: Contains the `.dat` configuration cards used for the MadGraph5 simulations.
 * `plots/`: Output kinematic spectra generated from the ROOT analysis.
+* `code/` : Contains the code used.
 * `paper/`: Contains the full LaTeX source code (`.tex`, and figures) alongside the compiled PDF manuscript.
 
 ## ⚙️ Dependencies and Tools
